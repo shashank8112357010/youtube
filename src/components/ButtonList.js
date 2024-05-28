@@ -4,7 +4,7 @@ const buttonList = ["All", "Javascript", "Java", "Live", "Music", "Songs", "Vlog
 
 const ButtonList = () => {
   return (
-    <div className='flex w-full overflow-x-scroll no-scrollbar my-1'>
+    <div className='flex w-full overflow-x-scroll hide-scrollbar my-1'>
     {
       buttonList.map((buttonName, index) => {
         return (
