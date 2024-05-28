@@ -2,6 +2,8 @@ import React from 'react';
 import { CiHome } from "react-icons/ci";
 import { SiYoutubeshorts } from "react-icons/si";
 import { MdOutlineSubscriptions } from "react-icons/md";
+import { useSelector } from 'react-redux';
+import store from '../utils/store';
 
 const sidebarItem = [
     {
@@ -103,6 +105,8 @@ const sidebarItem = [
 ]
 
 const Sidebar = () => { 
+    const open=useSelector((store)=>store.app.open);
+    console.log(open);
     return (
         <div className='relative left-0 p-5 h-[calc(100vh-4.625rem)] bg-white overflow-y-scroll overflow-x-hidden'>
             {
@@ -110,7 +114,7 @@ const Sidebar = () => {
                     return (
                         <div key={index} className='flex my-3'>
                             {item.icons}
-                            <p className='ml-5'>{item.title}</p>
+                            <p className={`ml-5 ${open ? "": 'hidden'}`}>{item.title}</p>
                         </div>
                     )
                 })

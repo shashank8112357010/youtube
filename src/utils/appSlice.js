@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { BsExposure } from "react-icons/bs";
 
 const appSlice = createSlice({
     name:"app",

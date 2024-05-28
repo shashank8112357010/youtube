@@ -1,15 +1,18 @@
-import React,{useState} from "react";
+import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { CiVideoOn } from "react-icons/ci";
 import Avatar from "react-avatar";
 import { CiSearch } from "react-icons/ci";
+import { useDispatch } from "react-redux";
+import { toggleSidebar } from "../utils/appSlice";
 
 const Navbar = () => {
-  const [open,setOpen] =useState(true);
+ const dispatch=useDispatch();
   const toggleHandler =() =>{
-    setOpen(!open)
+      dispatch(toggleSidebar());
   }
+
   return (
     <div className="flex fixed top-0 justify-center items-center w-[100%] z-10 bg-white">
       <div className="flex justify-between w-[96%] py-3 items-center">
