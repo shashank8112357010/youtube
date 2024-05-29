@@ -9,7 +9,6 @@ const appSlice = createSlice({
         searchSuggestion:[],
     },
     reducers:{
-        // action
         toggleSidebar:(state)=>{
             state.open = !state.open;
         },

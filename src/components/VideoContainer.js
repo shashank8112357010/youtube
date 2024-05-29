@@ -10,8 +10,8 @@ import { setHomeVideo } from '../utils/appSlice';
 
 const VideoContainer = () => {
     const { video, category } = useSelector((store) => store.app);
-    console.log(category);
     const dispatch = useDispatch();
+    
     const fetchingYoutubeVideo = async () => {
         try {
             const res = await axios.get(`${YOUTUBE_VIDEO_API}`);
