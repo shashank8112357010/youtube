@@ -13,38 +13,37 @@ const sidebarItem = [
     },
     {
         icons: <SiYoutubeshorts size="24px" />,
-        title: "Short"
+        title: "Shorts"
     },
     {
         icons: <MdOutlineSubscriptions size="24px" />,
-        title: "Subscription"
+        title: "Subscriptions"
     },
     {
         icons: <LiaYoutubeSquare size="24px" />,
-        title: "You"
+        title: "Library"
     },
     {
         icons: <TfiDownload size="24px" />,
-        title: "Download"
+        title: "Downloads"
     },
 ]
 
 const Sidebar = () => { 
-    const open=useSelector((store)=>store.app.open);
+    const open = useSelector((store) => store.app.open);
+    
     return (
-        <div className={`relative left-0 ${open? "w-[12%]" : "w-[6%]"} p-5 mx-3 h-[calc(100vh-4.625rem)] bg-white overflow-x-hidden`}>
+        <div className={`relative left-0 ${open ? "w-[200px]" : "w-[80px]"} transition-width duration-300 p-5 h-[calc(100vh-4.625rem)] bg-white overflow-x-hidden shadow-md`}>
             {
-                sidebarItem.map((item, index) => {
-                    return (
-                        <div key={index} className='flex my-16'>
-                            {item.icons}
-                            <p className={`ml-5 ${open ? "": 'hidden'}`}>{item.title}</p>
-                        </div>
-                    )
-                })
+                sidebarItem.map((item, index) => (
+                    <div key={index} className='flex items-center my-6 cursor-pointer hover:bg-gray-200 p-2 rounded-lg'>
+                        {item.icons}
+                        <p className={`ml-5 ${open ? "block" : 'hidden'} transition-opacity duration-300`}>{item.title}</p>
+                    </div>
+                ))
             }
         </div>
     )
 }
 
-export default Sidebar
+export default Sidebar;
