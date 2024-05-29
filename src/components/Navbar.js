@@ -18,7 +18,7 @@ const Navbar = () => {
       <div className="flex justify-between w-[96%] py-3 items-center">
         <div className='flex items-center'>
           <GiHamburgerMenu onClick={toggleHandler} size="24px" className="cursor-pointer" />
-          <img className="px-4" width={"115px"} src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/768px-YouTube_Logo_2017.svg.png" alt="YT_logo" />
+          <img className="px-4" width="115px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/768px-YouTube_Logo_2017.svg.png" alt="YT_logo" />
         </div>
         <div className="flex w-[40%] items-center">
           <div className="flex w-[100%] ">

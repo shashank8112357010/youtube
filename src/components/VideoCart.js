@@ -20,8 +20,8 @@ const VideoCart = ({item}) => {
     },[])
 
     return (
-        <div className='w-94 cursor-pointer my-2'>
-            <img className='rounded-xl w-full' src={item.snippet.thumbnails.medium.url} alt="ytvideo" />
+        <div className='w-98  cursor-pointer my-2'>
+            <img className='rounded-xl h-72 w-full' src={item.snippet.thumbnails.medium.url} alt="ytvideo" />
             <div>
                 <div className='flex mt-2'>
                     <Avatar src={ytIcon} size={35} round={true} />

@@ -1,38 +1,58 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
-import { YOUTUBE_VIDEO_API } from '../constant/youtube';
+import React, { useEffect} from 'react'
+import axios from "axios";
+import {API_KEY,  YOUTUBE_VIDEO_API } from '../constant/youtube';
 import VideoCart from './VideoCart';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { setHomeVideo } from '../utils/appSlice';
+
+
 
 const VideoContainer = () => {
-  const [video, setVideo] = useState([]);
-  const fetchingYoutubeVideo = async () => {
-    try {
-      const res = await axios.get(`${YOUTUBE_VIDEO_API}`);
-      console.log(res?.data?.items);
-      setVideo(res?.data?.items);
-    } catch (error) {
-      console.log(error);
+    const { video, category } = useSelector((store) => store.app);
+    console.log(category);
+    const dispatch = useDispatch();
+    const fetchingYoutubeVideo = async () => {
+        try {
+            const res = await axios.get(`${YOUTUBE_VIDEO_API}`);
+            dispatch(setHomeVideo(res?.data?.items))
+        } catch (error) {
+            console.log(error);
+        }
+
     }
+    const fetchVideoByCategory = async (category) => {
+        try {
+            const res = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${category}&type=video&key=${API_KEY}`);
+            dispatch(setHomeVideo(res?.data?.items))
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    useEffect(() => {
+        if (category === "All") {
+            fetchingYoutubeVideo();
+        } else {
+            fetchVideoByCategory(category);
+        }
+    }, [category]);
 
-  }
-  useEffect(() => {
-    fetchingYoutubeVideo();
-  }, []);
-  return (
-    <div className='grid grid-cols-3 gap-3'>
-      {
-        video.map((item) => {
-          return (
-            <Link to={`/watch?v=${item.id}`} key={item.id} >
-              <VideoCart item={item} />
-            </Link>
-          )
-        })
-      }
+    return (
+        <div className='grid grid-cols-3 gap-3 '>
+            {
+                video.map((item) => {
+                    console.log(item);
+                    return (
+                        <Link to={`/watch?v=${typeof item.id === 'object' ? item.id.videoId : item.id }`} key={typeof item.id === 'object' ? item.id.videoId : video.id } >
+                            <VideoCart item={item} />
+                        </Link>
 
-    </div>
-  )
+                    )
+                })
+            }
+
+        </div>
+    )
 }
 
 export default VideoContainer
