@@ -7,5 +7,6 @@ const store = configureStore({
         app:appReducer,
        chat:chatReducer,
     },
+   
 })
 export default store;

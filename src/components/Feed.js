@@ -4,7 +4,8 @@ import VideoContainer from './VideoContainer'
 
 const Feed = () => {
   return (
-    <div className='ml-5 mr-5 w-[82%]'> 
+    <div className='ml-8 mr-5 w-[96%]'> 
+    
       <ButtonList/>
       <VideoContainer/>
     </div>
